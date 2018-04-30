@@ -10,9 +10,13 @@ import numpy as np
 
 def mapping(LGLP, X0, XF):
     
+    # Creating vector that will store the coordinates value
     xn = np.zeros(len(LGLP))
+    
+    # Calculating element size
     dx = XF - X0
     
+    # Filling each one of the vector's position with its real coordinate
     for i in range(0, len(LGLP)):
         
         xn[i] = X0 + (LGLP[i] + 1) * (dx / 2)
