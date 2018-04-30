@@ -42,10 +42,10 @@ plt.subplot(1, 2, 1)
 for i in range(0, len(Nx)):
     line1 = plt.loglog(dT, MD[:, i], label= "N = " + str(Nx[i]))
 #    plt.xlim([np.min(Nx), np.max(Nx)])
-    plt.ylim([1e-5, 1e0])
+    plt.ylim([1e-6, 2e-1])
     plt.gca().invert_xaxis()
     plt.ylabel(r'Infinity error norm')
-    plt.legend(loc=2)
+    plt.legend(loc=3)
     plt.title('Time refining error evolution') 
 
 #
@@ -53,8 +53,8 @@ for i in range(0, len(dT)):
     plt.subplot(1, 2, 2)
     line1 = plt.semilogy(Nx, MD[i,:], label = 'dT = ' + str(dT[i]))
     plt.xlim([np.min(Nx), np.max(Nx)])
-    plt.ylim([1e-5, 1e0])
-    plt.legend(loc=2)
+    plt.ylim([1e-6, 2e-1])
+    plt.legend(loc=1)
     plt.title('Space refining error evolution')
 #
 
