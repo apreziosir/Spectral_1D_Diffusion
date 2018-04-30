@@ -37,37 +37,23 @@ for i in range(0, np.size(dT)):
 plt.figure(1, figsize=(11, 8.5))
 style.use('ggplot')        
 
-plt.subplot(2, 2, 1)
-line1 = plt.semilogy(Nx, MD[0,:], 'b')
-plt.xlim([np.min(Nx), np.max(Nx)])
-plt.ylim([1e-5, 1e0])
-plt.ylabel(r'Infinity error norm')
-#plt.legend(loc=3)
-plt.title('dT = ' + str(dT[0])) 
-#
-plt.subplot(2, 2, 2)
-line1 = plt.semilogy(Nx, MD[1,:], 'b')
-plt.xlim([np.min(Nx), np.max(Nx)])
-plt.ylim([1e-5, 1e0])
-#plt.legend(loc=3)
-plt.title('dT = ' + str(dT[1]))
-#
-plt.subplot(2, 2, 3)
-line1 = plt.semilogy(Nx, MD[2,:], 'b')
-plt.xlim([np.min(Nx), np.max(Nx)])
-plt.ylim([1e-5, 1e0])
-plt.ylabel(r'Infinity error norm')
-plt.xlabel('Number of nodes in discretization')
-#plt.legend(loc=3)
-plt.title('dT = ' + str(dT[2]))
-#
-plt.subplot(2, 2, 4)
-line1 = plt.semilogy(Nx, MD[3,:], 'b')
-plt.xlim([np.min(Nx), np.max(Nx)])
-plt.ylim([1e-5, 1e0])
-plt.xlabel('Number of nodes in discretization')
-#plt.legend(loc=3)
-plt.title('dT = ' + str(dT[3]))
-plt.draw()
+plt.subplot(1, 2, 1)
+for i in range(0, len(Nx)):
+    line1 = plt.loglog(dT, MD[:, i], label= "N = " + str(Nx[i]))
+    plt.xlim([np.min(Nx), np.max(Nx)])
+    plt.ylim([1e-5, 1e0])
+    plt.ylabel(r'Infinity error norm')
+    plt.legend(loc=2)
+    plt.title('Time refining error evolution') 
 
-plt.suptitle('Discretization comparison')
+#
+for i in range(0, len(dT)):
+    plt.subplot(1, 2, 2)
+    line1 = plt.semilogy(Nx, MD[i,:], label = 'dT = ' + str(dT[i]))
+    plt.xlim([np.min(Nx), np.max(Nx)])
+    plt.ylim([1e-5, 1e0])
+    plt.legend(loc=2)
+    plt.title('Space refining error evolution')
+#
+
+plt.suptitle('Error analysis for spectral 1D diffusion')
