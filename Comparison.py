@@ -19,7 +19,8 @@ from matplotlib import style
 
 
 # Declaring variables to be run and then plotted
-dT = np.array([0.5, 0.2, 0.1, 0.01, 0.005, 0.001, 0.0005, 0.0001])
+dT = np.array([0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001, 0.00005, 
+               0.00001])
 Nx = np.array([5, 8, 10, 20, 50, 75, 80])
 
 # Matrix to store maximum errors of each run
