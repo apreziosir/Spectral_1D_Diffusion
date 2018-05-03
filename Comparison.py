@@ -20,8 +20,8 @@ from matplotlib import style
 
 # Declaring variables to be run and then plotted
 dT = np.array([0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001, 0.00005, 
-               0.00001])
-Nx = np.array([5, 8, 10, 20, 50, 75, 80])
+               0.00001, 0.000005, 0.000003, 0.000001])
+Nx = np.array([5, 10, 20, 30, 40, 50, 60, 75, 80, 90])
 
 # Matrix to store maximum errors of each run
 MD = np.zeros((np.size(dT), np.size(Nx)))
@@ -42,20 +42,24 @@ plt.subplot(1, 2, 1)
 for i in range(0, len(Nx)):
     line1 = plt.loglog(dT, MD[:, i], label= "N = " + str(Nx[i]))
 #    plt.xlim([np.min(Nx), np.max(Nx)])
-    plt.ylim([1e-6, 2e-1])
+    plt.ylim([1e-7, 2e-1])
     plt.gca().invert_xaxis()
     plt.ylabel(r'Infinity error norm')
-    plt.legend(loc=3)
+    plt.xlabel('Timestep size (s)')
+    plt.legend(loc=4)
     plt.title('Time refining error evolution') 
+    plt.gca().invert_xaxis()
 
 #
 for i in range(0, len(dT)):
     plt.subplot(1, 2, 2)
     line1 = plt.semilogy(Nx, MD[i,:], label = 'dT = ' + str(dT[i]))
     plt.xlim([np.min(Nx), np.max(Nx)])
-    plt.ylim([1e-6, 2e-1])
+    plt.ylim([1e-7, 2e-1])
+    plt.xlabel('Number of nodes')
     plt.legend(loc=1)
     plt.title('Space refining error evolution')
 #
 
 plt.suptitle('Error analysis for spectral 1D diffusion')
+plt.draw()

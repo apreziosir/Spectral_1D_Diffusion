@@ -63,7 +63,7 @@ L = XF - X0
 # ==============================================================================
 
 # Calculating the dt with the stability parameter
-dT = 0.00005
+dT = 1e-4
 
 # Defining number of timesteps
 nT = int((TF - T0) / dT)
@@ -179,20 +179,20 @@ for t in range(1, nT):
     plt.subplot(2, 2, 3)
     plt.semilogy(xn, err)
     plt.xlim([X0, XF])
-    plt.ylim([1e-8, 1e2])
+    plt.ylim([1e-12, 1e-4])
     plt.ylabel('Absolute error')
     plt.title('Error')
     
     plt.subplot(2, 2, 4)
     plt.semilogy(np.linspace(T0, TF, nT), ert)
     plt.xlim([T0 - 0.2, TF + 0.2])
-    plt.ylim([1e-8, 1e2])
+    plt.ylim([1e-12, 1e-4])
     plt.title('Error evolution')
     
     plt.draw()
     titulo = 'Spectral elements method in single domain solution implicit'
     plt.suptitle(titulo)
-    plt.pause(0.2)
+    plt.pause(0.001)
     
     # Preparing for next timestep   
     C = C1
